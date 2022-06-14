@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+            <meta http-equiv="X-UA-Compatible" content="IE=edge">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <link rel="stylesheet" href="../dist/output.css">
+            <script src="../dist/build.js"></script>
+            <script src="https://kit.fontawesome.com/87e9c7292a.js" crossorigin="anonymous"></script>
+            <title>builder</title>
+</head>
+
+
+<body class="overflow-y-scroll">
+    <div class="flex justify-center shadow">
+        <nav
+            class="relative overflow flex flex-wrap justify-between items-center p-2 w-full bg-white text-blue-900 shadow">
+            <a class="mr-8 flex-none" href="https://dataexport.io/" target="_blank">
+                <img class="hidden lg:block h-8 font-extrabold"
+                    src="https://dataexport.io/wp-content/uploads/elementor/thumbs/dataexport-icon-p6efcfo5sj1b91ajaxujg9xs9ftbpn2ouwua4zw7jg.png"
+                    alt="Data Export Logo">
+                <div class="hidden lg:block -ml-5 font-extrabold tracking-widest text-blue-900 font-family: 'Syncopate', sans-serif;">
+                    DATA EXPORT
+            </a>
+    </div>
+    <img class="lg:hidden relative h-8 -ml-10"
+        src="https://dataexport.io/wp-content/uploads/elementor/thumbs/dataexport-icon-p6efcfo5sj1b91ajaxujg9xs9ftbpn2ouwua4zw7jg.png"
+        alt="Data Export Logo">
+    </a>
+
+     <div id="nav_menu"
+     class="z-10 flex-auto bg-white  hidden lg:flex flex-col lg:flex-row shadow lg:shadow-none absolute lg:relative right-4 lg:right-auto top-10 lg:top-auto p-4 lg:p-0 space-y-2 lg:space-y-0 lg:space-x-6 xl:space-x-8">
+
+        <a href="reportviewer.html" class="hover:text-orange-600 hover:border-x-2 sm:border-none hover:border-orange-600">
+            <i class="fa-regular fa-house "></i>
+            Report Viewer</a>
+
+
+        <a href="builder.html" class="text-orange-600 hover:border-x-2 sm:border-none hover:border-orange-600  ">
+            <i class="fa-regular fa-pen-ruler"></i>
+            Builder</a>
+
+
+        <a href="#" class="hover:text-orange-600  hover:border-x-2 sm:border-none  hover:border-orange-600  ">
+            <i class="fa-regular fa-calendar-check"></i>
+            Scheduler</a>
+
+        <div class="border-b lg:border-r border-secondary">
+        </div>
+
+        <a href="#" class="hover:text-orange-600  hover:border-x-2 sm:border-none hover:border-orange-600  ">
+            <i class="fa-regular fa-book-open-reader"></i>
+            Help Docs</a>
+
+    </div>
+
+    <div class="space-x-4 text-orange-600 capitalize">
+        <button>
+            <i class="fa-regular fa-bell "></i>
+        </button>
+        <button>
+            <i class="fa-regular fa-circle-user"></i>
+        </button>
+        <span>my store name</span>
+        <button>
+            <i class="fa-regular fa-comment-smile"></i>
+        </button>
+    </div>
+
+    <button onclick="navMenu()" class="flex lg:hidden mr-10 ">
+        <i class="fa-regular fa-bars"></i>
+    </button>
+    </nav>
+    </div>
+</div>
+
+
+    <section class="flex">
+     <div class="z-10 flex-auto bg-white hidden lg:flex  flex-col lg:flex-row shadow lg:shadow-none absolute lg:relative right-4 lg:right-auto top-10 lg:top-auto p-4 lg:p-0 space-y-2 lg:space-y-0 lg:space-x-6 xl:space-x-8">
+       <aside class="relative min-w-[256px]   w-64 text-blue-900 border shadow h-screen py-4 text-sm">
+            <div class="flex justify-end pr-4 mb-6">
+                <a href="shop.html">
+                <i class="fa-solid fa-bars text-xl text-orange-600 cursor-pointer"></i>
+            </a>         
+            </div>
+
+            <div class="relative mx-4 mb-4">
+                <span class="absolute inset-y-2 right-2 flex items-center pl-3">
+                    <i class="fa-solid fa-magnifying-glass text-orange-600"></i>
+                </span>
+ 
+                <input type="text"
+                    class="w-full py-1 pl-5 pr-8 border border-orange-600 focus:border-orange-600 rounded-md focus:ring-orange-600 focus:ring-opacity-40 focus:outline-none focus:ring"
+                    placeholder="search reports">
+            </div>
+
+            <ul x-data="{ expanded: false }" class="space-y-2">
+                <li>
+                    <button @click="expanded == 1 ? expanded = -1 : expanded = 1"
+                        :class="expanded == 1 ? 'bg-gray-200 font-bold' : ''"
+                        class="flex items-center py-2 w-full transition duration-75 hover:text-orange-500">
+                        <i class="fa-box-archive mx-4 relative z-10"
+                            :class="expanded == 1 ? 'fa-solid' : 'fa-regular'"></i>
+                        <div>My Reports</div>
+                        <i class="fa-regular ml-auto mr-4 text-orange-600  relative z-10"
+                            :class="expanded == 1 ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                    </button>
+                    <ul x-show="expanded == 1" x-collapse.duration.800ms class="space-y-0 mt-0 ">
+                        <li
+                            class="flex items-center px-11 py-1 w-full transition duration-75 hover:font-semibold hover:bg-gray-100 hover:border cursor-pointer">
+                            Products
+                        </li>
+                        <li
+                            class="flex items-center pl-11 py-1 w-full transition duration-75 hover:font-semibold hover:bg-gray-100 cursor-pointer">
+                            Billing
+                        </li>
+                        <li
+                            class="flex items-center pl-11 py-1 w-full transition duration-75 hover:font-semibold hover:bg-gray-100 cursor-pointer">
+                            Invoice
+                        </li>
+                    </ul>
+                </li>
+                <li class="flex items-center justify-center text-orange-600">——&nbsp;<span
+                        class="font-bold text-sx">PRE-MADE
+                        REPORTS</span>&nbsp;——</li>
+                <li>
+                    <button @click="expanded == 2 ? expanded = -1 : expanded = 2"
+                        :class="expanded == 2 ? 'bg-blue-300 font-bold' : ''"
+                        class="flex items-center py-3 w-full transition duration-75 hover:text-orange-500">
+                        <i class="fa-cart-shopping mx-4" :class="expanded == 2 ? 'fa-solid' : 'fa-regular'"></i>
+                        <div>Sales and Orders</div>
+                        <i class="fa-regular ml-auto mr-4 text-orange-600"
+                            :class="expanded == 2 ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                    </button>
+                    <ul x-show="expanded == 2" x-collapse.duration.800ms class="space-y-1 mt-2">
+                        <li
+                            class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                            Last 30 Days Sales
+                        </li>
+                        <li
+                            class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                            24 hr Sales Summary
+                        </li>
+                        <li
+                            class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                            All Products
+                        </li>
+                    </ul>
+                </li>
+
+               
+            <li>
+                <button @click="expanded == 3 ? expanded = -1 : expanded = 3"
+                    :class="expanded == 3 ? 'bg-blue-300 font-bold' : ''"
+                    class="flex items-center py-3 w-full transition duration-75 hover:text-orange-500">
+                    <i class="fa-shirt mx-4" :class="expanded == 3 ? 'fa-solid' : 'fa-regular'"></i>
+                    <div>Products and SKUs</div>
+                    <i class="fa-regular ml-auto mr-4 text-orange-600"
+                        :class="expanded == 3 ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                </button>
+                <ul x-show="expanded == 3" x-collapse.duration.800ms class="space-y-1 mt-2">
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <button @click="expanded == 4 ? expanded = -1 : expanded = 4"
+                    :class="expanded == 4 ? 'bg-blue-300 font-bold' : ''"
+                    class="flex items-center py-3 w-full transition duration-75 hover:text-orange-500">
+                    <i class="fa-boxes-stacked mx-4" :class="expanded == 4 ? 'fa-solid' : 'fa-regular'"></i>
+                    <div>Inventory</div>
+                    <i class="fa-regular ml-auto mr-4 text-orange-600"
+                        :class="expanded == 4 ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                </button>
+                <ul x-show="expanded == 4" x-collapse.duration.800ms class="space-y-1 mt-2">
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <button @click="expanded == 5 ? expanded = -1 : expanded = 5"
+                    :class="expanded == 5 ? 'bg-blue-300 font-bold' : ''"
+                    class="flex items-center py-3 w-full transition duration-75 hover:text-orange-500">
+                    <i class="fa-truck mx-4" :class="expanded == 5 ? 'fa-solid' : 'fa-regular'"></i>
+                    <div>Order Fulfillment</div>
+                    <i class="fa-regular ml-auto mr-4 text-orange-600"
+                        :class="expanded == 5 ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                </button>
+                <ul x-show="expanded == 5" x-collapse.duration.800ms class="space-y-1 mt-2">
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <button @click="expanded == 6 ? expanded = -1 : expanded = 6"
+                    :class="expanded == 6 ? 'bg-blue-300 font-bold' : ''"
+                    class="flex items-center py-3 w-full transition duration-75 hover:text-orange-500">
+                    <i class="fa-users mx-4" :class="expanded == 6 ? 'fa-solid' : 'fa-regular'"></i>
+                    <div>Customers</div>
+                    <i class="fa-regular ml-auto mr-4 text-orange-600"
+                        :class="expanded == 6 ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                </button>
+                <ul x-show="expanded == 6" x-collapse.duration.800ms class="space-y-1 mt-2">
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <button @click="expanded == 7 ? expanded = -1 : expanded = 7"
+                    :class="expanded == 7 ? 'bg-blue-300 font-bold' : ''"
+                    class="flex items-center py-3 w-full transition duration-75 hover:text-orange-500">
+                    <i class="fa-route mx-4" :class="expanded == 7 ? 'fa-solid' : 'fa-regular'"></i>
+                    <div>Customer Journey</div>
+                    <i class="fa-regular ml-auto mr-4 text-orange-600"
+                        :class="expanded == 7 ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                </button>
+                <ul x-show="expanded == 7" x-collapse.duration.800ms class="space-y-1 mt-2">
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <button @click="expanded == 8 ? expanded = -1 : expanded = 8"
+                    :class="expanded == 8 ? 'bg-blue-300 font-bold' : ''"
+                    class="flex items-center py-3 w-full transition duration-75 hover:text-orange-500">
+                    <i class="fa-money-bill-1-wave mx-4" :class="expanded == 8 ? 'fa-solid' : 'fa-regular'"></i>
+                    <div>Shopify Payments</div>
+                    <i class="fa-regular ml-auto mr-4 text-orange-600"
+                        :class="expanded == 8 ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                </button>
+                <ul x-show="expanded == 8" x-collapse.duration.800ms class="space-y-1 mt-2">
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <button @click="expanded == 9 ? expanded = -1 : expanded = 9"
+                    :class="expanded == 9 ? 'bg-blue-300 font-bold' : ''"
+                    class="flex items-center py-3 w-full transition duration-75 hover:text-orange-500">
+                    <i class="fa-calculator mx-4" :class="expanded == 9 ? 'fa-solid' : 'fa-regular'"></i>
+                    <div>Taxes</div>
+                    <i class="fa-regular ml-auto mr-4 text-orange-600"
+                        :class="expanded == 9 ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                </button>
+                <ul x-show="expanded == 9" x-collapse.duration.800ms class="space-y-1 mt-2">
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <button @click="expanded == 10 ? expanded = -1 : expanded = 10"
+                    :class="expanded == 10 ? 'bg-blue-300 font-bold' : ''"
+                    class="flex items-center py-3 w-full transition duration-75 hover:text-orange-600">
+                    <i class="fa-money-check mx-4" :class="expanded == 10 ? 'fa-solid' : 'fa-regular'"></i>
+                    <div>Transcations</div>
+                    <i class="fa-regular ml-auto mr-4 text-orange-600"
+                        :class="expanded == 10 ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                </button>
+                <ul x-show="expanded == 10" x-collapse.duration.800ms class="space-y-1 mt-2">
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                </ul>
+            </li>
+
+            <li>
+                <button @click="expanded == 11 ? expanded = -1 : expanded = 11"
+                    :class="expanded == 11 ? 'bg-blue-300 font-bold' : ''"
+                    class="flex items-center py-3 w-full transition duration-75 hover:text-orange-600">
+                    <i class="fa-chart-network mx-4" :class="expanded == 11 ? 'fa-solid' : 'fa-regular'"></i>
+                    <div>Externals Feeds</div>
+                    <i class="fa-regular ml-auto mr-4 text-orange-600"
+                        :class="expanded == 11 ? 'fa-angle-up' : 'fa-angle-down'"></i>
+                </button>
+                <ul x-show="expanded == 11" x-collapse.duration.800ms class="space-y-1 mt-2">
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                    <li
+                        class="flex items-center pl-11 w-full transition duration-75 hover:font-bold cursor-pointer">
+                        null
+                    </li>
+                </ul>
+            </li>
+        </ul>
+
+        <div class=" w-full border-orange-600 border mt-12 opacity-50"></div>
+
+        <div class="flex justify-center">
+        <div class="opacity-75 w-32 mt-12">
+            <img class="text-center opacity-70" src="/src/img/Dayspring-logo-gray@5x.png">
+        </div>
+        </div>
+
+        </aside>
+     </div>
+
+        <div class="space-x-4 bg-white border-r lg:hidden transition-transform duration-700 text-blue-900 flex flex-col items-center capitalize">
+            <div class="text-center my-5">
+                <a href="shop.html">
+                <i class="fa-regular fa-bars text-orange-600  fa-lg"></i>
+            </a>
+            </div>
+
+            <div class="">
+                <i class="fa-regular fa-search text-orange-600 fa-md -ml-3"></i>
+            </div>
+            <ul class="w-full">
+            <li class="hover:text-orange-600  py-4 cursor-pointer">
+            <a href="#">
+                <i class="fa-light fa-box-archive fa-md ml-1"></i>
+            </a>
+            <li>
+
+            <li class="hover:text-orange-600 py-4 cursor-pointer">
+            <a href="#">
+            <i class="fa-light fa-cart-shopping fa-md ml-1"></i>
+            </a>
+            </li>
+
+            <li class="hover:text-orange-600 py-4 cursor-pointer">
+            <a href="#">
+                <i class="fa-light fa-shirt fa-md ml-1"></i>
+            </a> 
+            </li>
+
+            <li class="hover:text-orange-600 py-4 cursor-pointer">
+            <a href="#"> 
+                <i class="fa-light fa-boxes-stacked fa-lg ml-1"></i>
+            </a>
+            </li>
+
+            <li class="hover:text-orange-600 py-4 cursor-pointer">
+                <a href="#">
+                <i class="fa-light fa-truck fa-md ml-1"></i>
+                </a>
+            </li>
+
+            <li class="hover:text-orange-600 py-4 cursor-pointer">
+                <a href="#">
+                <i class="fa-light fa-users fa-md ml-1"></i>
+                </a>
+            </li>
+
+            <li class="hover:text-orange-600 py-4 cursor-pointer">
+                <a href="#">
+                <i class="fa-light fa-route fa-md ml-1"></i>
+                </a>
+            </li>
+
+            <li class="hover:text-orange-600 py-4 cursor-pointer">
+                <a href="#">
+                <i class="fa-light fa-money-bill-1-wave fa-md ml-1"></i>
+                </a>
+            </li>
+
+            <li class="hover:text-orange-600 py-4 cursor-pointer">
+                <a href="#">
+                <i class="fa-light fa-calculator fa-lg ml-1"></i>
+                </a>
+            </li>
+
+            <li class="hover:text-orange-600 py-4 cursor-pointer">
+                <a href="#">
+                <i class="fa-light fa-money-check fa-lg ml-1"></i>
+                </a>
+            </li>
+
+            <li class="hover:text-orange-600 py-4 cursor-pointer">
+                <a href="#">
+                <i class="fa-light fa-chart-network fa-md    ml-1"></i>
+                </a>
+            </li>
+
+            <div class="border w-full"></div>
+
+            <div class="w-7 mt-5 ml-2">
+                <a href="https://www.dayspringlabs.com/">
+                <img class="opacity-50" src="/src/img/sd_fire.svg">
+            </a>
+            </div>
+        </ul>
+        </div>
+    </div>  
+
+        <section class="bg-black w-full h-screen text-sm p-8">
+            <div class="flex justify-between mb-10">
+               
+            </div>
+            <div class="relative overflow h-[calc(100vh-20rem)] lg:h-[calc(100vh-17rem)] border-blue-900 rounded shadow mb-6 lg:mb-10">
+               <div class="text-sm uppercase tracking-wider font-semibold py-10 text-orange-600 ">
+                   <i class="fa-light fa-pen-ruler fa-lg m-5"></i>
+                       report builder
+               </div>
+               <div class="text-sm uppercase tracking-wider font-semibold pl-10 text-blue-900 ">
+                <i class="fa-light fa-pen-ruler fa-lg m-5"></i>
+                    getting started
+            </div>  
+            </div>
+
+            <div
+                class="flex flex-col space-y-5 lg:space-y-0 lg:flex-row items-center text-blue-900 justify-between">
+                <div>Showing 1- 20 of 125 results</div>
+                <nav>
+                    <ul class="flex items-center sapce-x-2 xl:space-x-4">
+                        <li>
+                            <a href="#"
+                                class="bg-white outline outline-1 outline-orange-500 text-orange-500 py-2 px-3 rounded">
+                                <i class="fa-regular fa-chevron-left"></i>
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#" class="bg-orange-500 text-white font-bold py-2 px-3 rounded">1</a>
+                        </li>
+                        <li>
+                            <a href="#" class="py-2 px-3 rounded">2</a>
+                        </li>
+                        <li>
+                            <a href="#" class="py-2 px-3 rounded">3</a>
+                        </li>
+                        <li>
+                            <a href="#" class="py-2 px-3 rounded">4</a>
+                        </li>
+                        <li>
+                            <a href="#" class="py-2 px-3 rounded">5</a>
+                        </li>
+                        <li>
+                            <a href="#"
+                                class="bg-white outline outline-1 outline-orange-500 text-orange-500 py-2 px-3 rounded">
+                                <i class="fa-regular fa-chevron-right"></i>
+                            </a>
+                        </li>
+                    </ul>
+                </nav>
+
+                <div>
+                    <span class="mr-2 xl:mr-6">Rows per page select</span>
+                    <select
+                        class="h-10 bg-white border border-orange-500 focus:border-orange-500 rounded-md focus:ring-orange-500 focus:ring-opacity-40 focus:outline-none focus:ring">
+                        <option>20</option>
+                        <option>50</option>
+                        <option>75</option>
+                        <option>100</option>
+                    </select>
+                </div>
+            </div>
+
+        </section>
+
+    </section>
+
+</body>
+<script>
+    // Navbar hamburger
+    function navMenu() {
+        var element = document.getElementById("nav_menu");
+        element.classList.toggle("!flex");
+    } 
+</script>
+
+</html>
